@@ -281,17 +281,31 @@ def playGame(wordList):
  
     2) When done playing the hand, repeat from step 1    
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this line when you code the function
-   
+    endGame = False
+    hand = 0
+    print()
 
+    while not endGame:
+        entry = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        if entry == 'n':
+            hand = dealHand(HAND_SIZE)
+            playHand(hand, wordList, HAND_SIZE)
+        elif entry == 'r':
+            if hand == 0:
+                hand = dealHand(HAND_SIZE)
+            playHand(hand, wordList, HAND_SIZE)
+        elif entry == 'e':
+            endGame = True
+        else:
+            print("Invalid command.")
 
 
 #
 # Build data structures used for entire session and play game
 #
-#if __name__ == '__main__':
-    wordList = loadWords()
-    playGame(wordList)
-#wordList = loadWords()
-#playHand({'h':1, 'i':1, 'c':1, 'z':1, 'm':2, 'a':1}, wordList, 7)
+# if __name__ == '__main__':
+#     wordList = loadWords()
+#     playGame(wordList)
+wordList = loadWords()
+# playHand({'h':1, 'i':1, 'c':1, 'z':1, 'm':2, 'a':1}, wordList, 7)
+playGame(wordList)
